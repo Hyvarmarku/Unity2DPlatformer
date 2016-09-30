@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using UnityEngine.SceneManagement;
+using GameProgramming2D.State;
 
 namespace GameProgramming2D
 {
@@ -28,13 +29,23 @@ namespace GameProgramming2D
         public Pauser Pauser { get { return _pauser; } }
         public PlayerControl Player
         {
-            get { return _playerControl; }
+            get
+            {
+                if (_playerControl == null)
+                {
+                    _playerControl = FindObjectOfType<PlayerControl>();
+                }
+                return _playerControl;
+            }
         }
+
+        public GameStateManager StateManager { get; private set;}
 
         private void Awake()
         {
             if (_instance == null)
             {
+                DontDestroyOnLoad(gameObject);
                 _instance = this;
                 Init();
             }
@@ -49,6 +60,14 @@ namespace GameProgramming2D
             _pauser = gameObject.GetOrAddComponent<Pauser>();
             _inputManager = gameObject.GetOrAddComponent<InputManager>();
             _playerControl = FindObjectOfType<PlayerControl>();
+            InitGameStateManager();
+        }
+
+        private void InitGameStateManager()
+        {
+            StateManager = new GameStateManager(new MenuState());
+            StateManager.AddState(new GameState ());
+
         }
 
         public void Reload()

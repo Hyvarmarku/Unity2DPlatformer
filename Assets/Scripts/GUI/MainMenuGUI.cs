@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MainMenuGUI : MonoBehaviour {
+namespace GameProgramming2D.GUI
+{
+    public class MainMenuGUI : MonoBehaviour
+    {
+        public void OnStartGamePress()
+        {
+            GameManager.Instance.StateManager.PerformTransition(State.TransitionType.MainMenuToGame);
+        }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        public void OnExitGamePress()
+        {
+            Application.Quit();
+        }
+    }
 }
