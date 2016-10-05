@@ -67,12 +67,14 @@ namespace GameProgramming2D
         {
             StateManager = new GameStateManager(new MenuState());
             StateManager.AddState(new GameState ());
+            StateManager.AddState(new GameOverState());
 
         }
 
         public void Reload()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameManager.Instance.StateManager.PerformTransition(State.TransitionType.GameToGameOver);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
