@@ -1,9 +1,28 @@
 ﻿using UnityEngine;
+using GameProgramming2D;
 using System.Collections;
 
 public class Enemy : MonoBehaviour
+
 {
-	public float moveSpeed = 2f;		// The speed the enemy moves at.
+
+    public enum EnemyType
+    {
+        WithShip,
+        WithoutShip
+    }
+
+    [SerializeField]
+    EnemyType _enemyType;
+
+    public EnemyType Type
+    {
+        get { return _enemyType; }
+    }
+
+    public Rigidbody2D Rigidbody { get; private set; }
+
+    public float moveSpeed = 2f;		// The speed the enemy moves at.
 	public int HP = 2;					// How many times the enemy can be hit before it dies.
 	public Sprite deadEnemy;			// A sprite of the enemy when it's dead.
 	public Sprite damagedEnemy;			// An optional sprite of the enemy when it's damaged.
@@ -23,6 +42,8 @@ public class Enemy : MonoBehaviour
 	void Awake()
 	{
         score = FindObjectOfType<Score>();
+        GameManager.Instance.AddEnemy(this);
+        Rigidbody = GetComponent<Rigidbody2D>();
 	}
 
 	void FixedUpdate ()
@@ -61,6 +82,11 @@ public class Enemy : MonoBehaviour
 		// Reduce the number of hit points by one.
 		HP--;
 	}
+
+    void OnDestroy()
+    {
+        GameManager.Instance.RemoveEnemy(this);
+    }
 	
 	void Death()
 	{
@@ -115,4 +141,5 @@ public class Enemy : MonoBehaviour
 		enemyScale.x *= -1;
 		transform.localScale = enemyScale;
 	}
+
 }

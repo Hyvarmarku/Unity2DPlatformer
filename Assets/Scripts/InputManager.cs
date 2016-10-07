@@ -9,6 +9,11 @@ namespace GameProgramming2D {
             if (GameManager.Instance.Player == null)
                 return;
 
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                GameManager.Instance.Save();
+            }
+
             if (Input.GetKeyUp(KeyCode.P))
             {
                 GameManager.Instance.Pauser.TogglePause();

@@ -40,5 +40,10 @@ namespace GameProgramming2D.State
         public virtual void StateActivated() {}
         public virtual void StateDeactivating() {}
 
+        protected void HandleSceneLoaded(int sceneIndex)
+        {
+            GameManager.Instance.SceneLoaded -= HandleSceneLoaded;
+            GameManager.Instance.StateManager.RaiseStateLoaded(State);
+        }
     }
 }

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace GameProgrammin2D
+namespace GameProgramming2D
 {
     public static class SaveSystem
     {

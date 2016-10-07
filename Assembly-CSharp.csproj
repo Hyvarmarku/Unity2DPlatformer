@@ -67,15 +67,20 @@
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Remover.cs" />
      <Compile Include="Assets\Scripts\Rocket.cs" />
+     <Compile Include="Assets\Scripts\SaveSystem\GameData.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\SaveSystem.cs" />
+     <Compile Include="Assets\Scripts\SaveSystem\SerializableVector3.cs" />
+     <Compile Include="Assets\Scripts\SaveSystem\UnitData.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\ScoreShadow.cs" />
      <Compile Include="Assets\Scripts\SetParticleSortingLayer.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
+     <Compile Include="Assets\Scripts\Systems\EnemyData.cs" />
      <Compile Include="Assets\Scripts\Systems\GameOverState.cs" />
      <Compile Include="Assets\Scripts\Systems\GameState.cs" />
      <Compile Include="Assets\Scripts\Systems\GameStateManager.cs" />
      <Compile Include="Assets\Scripts\Systems\MenuState.cs" />
+     <Compile Include="Assets\Scripts\Systems\PlayerData.cs" />
      <Compile Include="Assets\Scripts\Systems\StateBase.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

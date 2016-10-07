@@ -31,6 +31,16 @@ public class PlayerControl : MonoBehaviour
     private Gun _gun;
     private LayBombs _laybombs;
 
+    public PlayerHealth Health
+    {
+        get; private set;
+    }
+
+    public Rigidbody2D Rigidbody
+    {
+        get { return rigidbody2d;}
+    }
+
     public bool Jump
     {
         get { return jump; }
@@ -44,7 +54,7 @@ public class PlayerControl : MonoBehaviour
     public bool FacingRight
     {
         get;
-        private set;
+        set;
     }
 
     public Gun Gun
@@ -62,6 +72,7 @@ public class PlayerControl : MonoBehaviour
         FacingRight = true;
         _gun = GetComponentInChildren<Gun>();
         _laybombs = GetComponent<LayBombs>();
+        Health = GetComponent<PlayerHealth>();
 	}
 
 

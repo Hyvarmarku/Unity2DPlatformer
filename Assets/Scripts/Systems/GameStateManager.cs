@@ -23,6 +23,9 @@ namespace GameProgramming2D.State
 
     public class GameStateManager 
     {
+        public delegate void StateLoadedDelegate(StateType type);
+        public event StateLoadedDelegate StateLoaded;
+
         private List<StateBase> _states = new List<StateBase>();
 
         public StateBase CurrentState { get; private set; }
@@ -32,6 +35,14 @@ namespace GameProgramming2D.State
         {
             if (AddState(initialState))
                 CurrentState = initialState;
+        }
+
+        public void RaiseStateLoaded(StateType state)
+        {
+            if (StateLoaded != null)
+            {
+                StateLoaded(state);
+            }
         }
 
         public bool AddState(StateBase state)
