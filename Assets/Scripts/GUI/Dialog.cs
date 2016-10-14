@@ -22,7 +22,12 @@ namespace GameProgramming2D.GUI
         #endregion
 
         #region Private fields
-        private Vector3 _okButtonPosition; 
+
+        private Vector3 _okButtonPosition;
+        private UnityAction _okButtonClick;
+        private UnityAction _cancelButtonClick;
+
+        
         #endregion
 
         #region Unity messages
@@ -43,17 +48,31 @@ namespace GameProgramming2D.GUI
 
         public void CloseDialog(DialogClosedDelegate dialogClosedDelegate = null, bool destroyAfterClose = true)
         {
+            if (dialogClosedDelegate != null)
+            {
+                dialogClosedDelegate();
+            }
 
+            if (destroyAfterClose)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         public void SetOnOKClicked(DialogClosedDelegate callback = null, bool destroyAfeterClose = true)
         {
-
+            _okButtonClick = () => CloseDialog(callback, destroyAfeterClose);
+            SetButtonOnClick(_okButton, _okButtonClick);
         }
 
         public void SetOnCancelClicked(DialogClosedDelegate callback = null, bool destroyAfeterClose = true)
         {
-
+            _cancelButtonClick = () => CloseDialog(callback, destroyAfeterClose);
+            SetButtonOnClick(_cancelButton, _cancelButtonClick);
         }
 
         public void SetHeadline(string text)
@@ -85,16 +104,29 @@ namespace GameProgramming2D.GUI
 
         public void SetOkButtonText(string text)
         {
-         
+            SetButtonText(_okButton, text);
         }
 
         public void SetCancelButtonText(string text)
         {
-
+            SetButtonText(_cancelButton, text);
         }
 
+        #endregion
 
+        #region Private methods
+        
+        private void SetButtonText(Button button,string text)
+        {
+            Text label = button.GetComponentInChildren<Text>();
+            label.text = text;
+        }
 
+        private void SetButtonOnClick(Button button, UnityAction callback)
+        {
+            button.onClick.AddListener(callback);
+        }
+        
         #endregion
     }
 }

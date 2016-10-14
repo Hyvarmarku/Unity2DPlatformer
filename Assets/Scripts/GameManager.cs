@@ -103,6 +103,16 @@ namespace GameProgramming2D
 
         }
 
+        public void QuitGame()
+        {
+            Dialog dialog = guiManager.CreateDialog();
+            dialog.SetHeadline("Quit Game");
+            dialog.SetText("Are you sure you want to quit game?");
+            dialog.SetOnOKClicked(() => Application.Quit());
+            dialog.SetOnCancelClicked();
+            dialog.Show();
+        }
+
         public void Reload()
         {
             GameManager.Instance.StateManager.PerformTransition(State.TransitionType.GameToGameOver);

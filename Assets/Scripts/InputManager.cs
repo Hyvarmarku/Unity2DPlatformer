@@ -6,9 +6,6 @@ namespace GameProgramming2D {
     {
         private void Update()
         {
-            if (GameManager.Instance.Player == null)
-                return;
-
             if (Input.GetKeyUp(KeyCode.S))
             {
                 GameManager.Instance.Save();
@@ -16,8 +13,22 @@ namespace GameProgramming2D {
 
             if (Input.GetKeyUp(KeyCode.P))
             {
-                GameManager.Instance.Pauser.TogglePause();
+                GameManager.Instance.Pauser.SetPauseOn();
             }
+
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                GameManager.Instance.QuitGame();
+            }
+
+            UpdatePlayerKeys();
+        }
+
+        private void UpdatePlayerKeys()
+        {
+            if (GameManager.Instance.Player == null || GameManager.Instance.Pauser.isPaused)
+                return;
+
             if (Input.GetButtonDown("Jump"))
             {
                 GameManager.Instance.Player.Jump = true;

@@ -40,6 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da1198fbf9751e40b0a63a5eca242e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dialogPrefab: {fileID: 11458912, guid: 151ac8b927570ee47ae78fee63ef1c6c, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -60,6 +60,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22453084}
+  - 114: {fileID: 11458912}
   m_Layer: 5
   m_Name: Dialog
   m_TagString: Untagged
@@ -313,6 +314,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11458912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a5a4ce157e68442915598e554e5e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _headline: {fileID: 11464358}
+  _text: {fileID: 11479076}
+  _okButton: {fileID: 11499018}
+  _cancelButton: {fileID: 11409520}
 --- !u!114 &11464358
 MonoBehaviour:
   m_ObjectHideFlags: 1
