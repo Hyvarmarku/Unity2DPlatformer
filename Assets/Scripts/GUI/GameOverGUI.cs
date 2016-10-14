@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace GameProgramming2D.GUI
 {
-    public class GameOverGUI : MonoBehaviour
+    public class GameOverGUI : SceneGUI
     {
         public void OnStartGamePress()
         {
